@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.guangzhengli.dotnetmigrationideaplugin.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.guangzhengli.dotnetmigrationideaplugin.MyBundle
 
 class MyApplicationService {
 
