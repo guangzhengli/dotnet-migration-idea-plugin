@@ -1,18 +1,46 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.guangzhengli.dotnetmigrationideaplugin</id>
-    <name>dotnet-migration-idea-plugin</name>
+    <name>Dotnet-Migration</name>
     <vendor>guangzhengli</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.guangzhengli.dotnetmigrationideaplugin.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.guangzhengli.dotnetmigrationideaplugin.services.MyProjectService"/>
-    </extensions>
+<!--    <extensions defaultExtensionNs="com.intellij">-->
+<!--        <projectConfigurable displayName="Dotnet6 Migration"/>-->
+<!--        <applicationService serviceImplementation="com.github.guangzhengli.dotnetmigrationideaplugin.services.MyApplicationService"/>-->
+<!--        <projectService serviceImplementation="com.github.guangzhengli.dotnetmigrationideaplugin.services.MyProjectService"/>-->
+<!--    </extensions>-->
 
-    <applicationListeners>
-        <listener class="com.github.guangzhengli.dotnetmigrationideaplugin.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+<!--    <applicationListeners>-->
+<!--        <listener class="com.github.guangzhengli.dotnetmigrationideaplugin.listeners.MyProjectManagerListener"-->
+<!--                  topic="com.intellij.openapi.project.ProjectManagerListener"/>-->
+<!--    </applicationListeners>-->
+
+    <actions>
+        <group
+                id="org.intellij.sdk.action.GroupedActions"
+                text="Dotnet Migration"
+                popup="true">
+            <add-to-group
+                    group-id="EditMenu"
+                    anchor="after"
+                    relative-to-action="com.github.guangzhengli.dotnetmigrationideaplugin.actions.CpURLAction"/>
+            <add-to-group
+                    group-id="EditorPopupMenu"
+                    anchor="after"
+                    relative-to-action="com.github.guangzhengli.dotnetmigrationideaplugin.actions.CpURLAction"/>
+            <action id="com.github.guangzhengli.dotnetmigrationideaplugin.actions.CpURLAction"
+                    class="com.github.guangzhengli.dotnetmigrationideaplugin.actions.CpURLAction" text="CopyRoute"
+                    description="Copy route api">
+<!--                <add-to-group group-id="EditorPopupMenu" anchor="first"/>-->
+<!--                <add-to-group group-id="EditMenu" anchor="first"/>-->
+                <keyboard-shortcut
+                        keymap="$default"
+                        first-keystroke="control alt G"
+                        replace-all="true"/>
+            </action>
+        </group>
+    </actions>
+
 </idea-plugin>
